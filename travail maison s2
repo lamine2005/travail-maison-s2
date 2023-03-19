@@ -1,0 +1,122 @@
+4 procédures déférèrent pour trier un tableau (un
+seul dimension) en ordre descendent:
+methode 1:
+#include<stdio.h>
+void methode_1(int T[5]){
+	int i,j,s;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+			if(T[j]<T[j+1]){
+			s=T[j];
+			T[j]=T[j+1];
+			T[j+1]=s;
+		}
+	}
+	}
+	for(i=0;i<5;i++){
+		printf("%d\n",T[i]);
+	}
+}
+int main(){
+	int i,T[5];
+	printf("veuillez entrer les element du tableau :\n ");
+	for(i=0;i<5;i++){
+		printf("T[%d]=",i+1);
+		scanf("%d",&T[i]);
+	}
+	methode_1(T);
+	return 0;
+}
+methode 2:
+#include<stdio.h>
+void methode_2(int T[5]) {
+  int i,j,l,s;
+  for (i = 0;i<5;i++) {
+    l=i;
+    for (j=i+1;j<=5;j++) {
+      if (T[j]>T[l]) {
+        l=j;
+      }
+    }
+    if (l!=i) {
+      s=T[i];
+      T[i]=T[l];
+      T[l]=s;
+    }
+  }
+  for(i=0;i<5;i++){
+  	printf("%d\n",T[i]);
+  }
+}
+int main(){
+	int i,T[5];
+	printf("veuillez entrer les element du tableau :\n ");
+	for(i=0;i<5;i++){
+		printf("T[%d]=",i+1);
+		scanf("%d",&T[i]);
+	}
+	methode_2(T);
+	return 0;
+}
+methode 3:
+#include<stdio.h>
+void methode_3(int T[5]) {
+  int i,j,s;
+  for (i=0;i<5;i++) {
+    s=T[i];
+    j=i-1;
+    while (j>=0&&T[j]<=s) {
+      T[j+1]=T[j];
+      j--;
+    }
+    T[j+1]=s;
+  }
+   for(i=0;i<5;i++){
+  	printf("%d\n",T[i]);
+  }
+}
+int main(){
+	int i,T[5];
+	printf("veuillez entrer les element du tableau :\n ");
+	for(i=0;i<5;i++){
+		printf("T[%d]=",i+1);
+		scanf("%d",&T[i]);
+	}
+	methode_3(T);
+	return 0;
+}
+methode 4:
+#include<stdio.h>
+void methode_4(int T[5]){
+	int i,m,debut,fin;
+	debut=0,fin=4;
+	while(debut<fin){
+        m=T[debut];
+        T[debut]=T[fin];
+        T[fin]=m;
+        debut++;
+        fin--;
+    }
+    for(i=0;i<5;i++) {
+        printf("%d\n", T[i]);
+    }
+}
+int main(){
+	int T[5],i,j,m;
+	printf("veuillez entrer les element du tableau :\n ");
+	for(i=0;i<5;i++){
+    printf("T[%d]=",i+1);
+	scanf("%d",&T[i]);
+	}
+	for(i=0;i<5;i++){
+		for(j=i+1;j<5;j++){
+			if(T[i]>T[j]){
+				m=T[i];
+				T[i]=T[j];
+				T[j]=m;
+			}
+		}
+	}
+
+	methode_4(T);
+}
